@@ -25,7 +25,6 @@ public class Ve {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idKhachHang")
-//    @Column(name = "id_khach_hang")
     private KhachHang khachHang;
 
     @ManyToOne(fetch = FetchType.LAZY)

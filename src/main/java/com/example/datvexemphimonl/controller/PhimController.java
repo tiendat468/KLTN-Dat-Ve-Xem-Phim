@@ -5,6 +5,7 @@ import com.example.datvexemphimonl.entity.DTO.PhimDTO;
 import com.example.datvexemphimonl.entity.DienVien;
 import com.example.datvexemphimonl.entity.LoaiPhim;
 import com.example.datvexemphimonl.entity.Phim;
+import com.example.datvexemphimonl.service.DienVienService;
 import com.example.datvexemphimonl.service.PhimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,13 @@ import java.util.Set;
 @RestController
 @RequestMapping("/phim")
 public class PhimController {
+
     @Autowired
     private PhimService phimService;
+
+    @Autowired
+    private DienVienService dienVienService;
+
 
     @GetMapping()
     public List<PhimDTO> getAllPhim() {
@@ -32,6 +38,15 @@ public class PhimController {
     }
     @PostMapping
     public PhimDTO savePhim(@RequestBody Phim phim){
+        List<DienVien> dvs = phim.getDsDienVien();
+        List<DienVien> dienVienList = new ArrayList<>();
+        if(dvs.size() != 0){
+            dvs.forEach(dv ->{
+                dienVienList.add(dienVienService.addDienVien(dv));
+            });
+           phim.setDsDienVien(dienVienList);
+        }
+
         Phim p = phimService.savePhim(phim);
         return changeDTO(p);
     }
@@ -44,6 +59,16 @@ public class PhimController {
 
     @PutMapping("/{id}")
     public PhimDTO updatePhim(@RequestBody Phim phim){
+        List<DienVien> dvs = phim.getDsDienVien();
+        List<DienVien> dienVienList = new ArrayList<>();
+        if(dvs.size() != 0){
+            dvs.forEach(dv ->{
+                dienVienList.add(dienVienService.addDienVien(dv));
+            });
+            phim.setDsDienVien(dienVienList);
+        }
+
+
         Phim p = phimService.updatePhim(phim);
 
         return changeDTO(p);
