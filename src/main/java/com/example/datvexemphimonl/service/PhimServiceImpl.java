@@ -17,4 +17,24 @@ public class PhimServiceImpl implements PhimService{
     public List<Phim> getAllPhim() {
         return phimRepository.findAll();
     }
+
+    @Override
+    public Phim savePhim(Phim phim) {
+        return phimRepository.save(phim);
+    }
+
+    @Override
+    public Phim getPhimById(int id) {
+        return phimRepository.getById(id);
+    }
+
+    @Override
+    public void deletePhim(int id) {
+
+    }
+
+    @Override
+    public Phim updatePhim(Phim phim) {
+        return phimRepository.save(phim);
+    }
 }
