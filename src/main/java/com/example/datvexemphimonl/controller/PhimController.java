@@ -7,9 +7,7 @@ import com.example.datvexemphimonl.entity.LoaiPhim;
 import com.example.datvexemphimonl.entity.Phim;
 import com.example.datvexemphimonl.service.PhimService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -32,12 +30,30 @@ public class PhimController {
 
         return list;
     }
+    @PostMapping
+    public PhimDTO savePhim(@RequestBody Phim phim){
+        Phim p = phimService.savePhim(phim);
+        return changeDTO(p);
+    }
+
+    @GetMapping("/{id}")
+    public PhimDTO getPhim(@PathVariable("id") int id){
+        Phim p = phimService.getPhimById(id);
+        return changeDTO(p);
+    }
+
+    @PutMapping("/{id}")
+    public PhimDTO updatePhim(@RequestBody Phim phim){
+        Phim p = phimService.updatePhim(phim);
+
+        return changeDTO(p);
+    }
 
     private PhimDTO changeDTO(Phim phim){
 
         Set<DienVien> dvs = new HashSet<>();
 
-        PhimDTO phimDTO = new PhimDTO(phim.getIdPhim(),phim.getTenPhim(),phim.getThoiLuong(),phim.getDoTuoi(),phim.getNgayCongChieu(),phim.getQuocGia(),phim.getTomTat(),phim.getTrangThai(),changeDTO(phim.getLoaiPhim()),phim.getDsDienVien(),phim.getDsXuatChieu());
+        PhimDTO phimDTO = new PhimDTO(phim.getIdPhim(),phim.getTenPhim(),phim.getDaoDien(),phim.getThoiLuong(),phim.getDoTuoi(),phim.getNgayCongChieu(),phim.getQuocGia(),phim.getTomTat(),phim.getTrangThai(),changeDTO(phim.getLoaiPhim()),phim.getDsDienVien(),phim.getDsXuatChieu());
         return phimDTO;
     }
     private LoaiPhimDTO changeDTO(LoaiPhim loaiPhim){

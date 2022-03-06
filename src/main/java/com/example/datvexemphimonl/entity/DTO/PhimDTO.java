@@ -17,6 +17,7 @@ import java.util.Set;
 public class PhimDTO {
     private int idPhim;
     private String tenPhim;
+    private String daoDien;
     private int thoiLuong;
     private int doTuoi;
     private Date ngayCongChieu;
@@ -30,9 +31,10 @@ public class PhimDTO {
     public PhimDTO() {
     }
 
-    public PhimDTO(int idPhim, String tenPhim, int thoiLuong, int doTuoi, Date ngayCongChieu, String quocGia, String tomTat, String trangThai, LoaiPhimDTO loaiPhim, List<DienVien> dsDienVien, Set<XuatChieu> dsXuatChieu) {
+    public PhimDTO(int idPhim, String tenPhim,String daoDien, int thoiLuong, int doTuoi, Date ngayCongChieu, String quocGia, String tomTat, String trangThai, LoaiPhimDTO loaiPhim, List<DienVien> dsDienVien, Set<XuatChieu> dsXuatChieu) {
         this.idPhim = idPhim;
         this.tenPhim = tenPhim;
+        this.daoDien = daoDien;
         this.thoiLuong = thoiLuong;
         this.doTuoi = doTuoi;
         this.ngayCongChieu = ngayCongChieu;
