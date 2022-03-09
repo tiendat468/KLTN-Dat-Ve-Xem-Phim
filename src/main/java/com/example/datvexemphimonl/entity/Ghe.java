@@ -23,8 +23,8 @@ public class Ghe {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPhong")
-//    @Column(name = "id_phong")
     private PhongChieu phongChieu;
+
 
     public Ghe() {
     }

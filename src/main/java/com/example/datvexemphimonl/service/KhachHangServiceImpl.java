@@ -25,7 +25,7 @@ public class KhachHangServiceImpl implements KhachHangService{
 
     @Override
     public KhachHang getKhachHangById(int id) {
-        return khachHangRepository.getById(id);
+        return khachHangRepository.findById(id).get();
     }
 
     @Override

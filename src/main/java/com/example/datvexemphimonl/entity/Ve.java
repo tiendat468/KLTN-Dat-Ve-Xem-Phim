@@ -29,12 +29,10 @@ public class Ve {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idGhe")
-//    @Column(name = "id_ghe")
     private Ghe ghe;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idXuatChieu")
-//    @Column(name = "id_xuat_chieu")
     private XuatChieu xuatChieu;
 
     public Ve() {

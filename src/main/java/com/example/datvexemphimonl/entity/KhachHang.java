@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -31,6 +33,9 @@ public class KhachHang {
 
     @Column(name = "thanh_toan")
     private String thongTinThanhToan;
+
+    @OneToMany(mappedBy = "khachHang", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ve> dsVe;
 
     public KhachHang() {
     }

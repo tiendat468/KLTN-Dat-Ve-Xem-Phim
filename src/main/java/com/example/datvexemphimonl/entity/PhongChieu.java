@@ -16,7 +16,7 @@ public class PhongChieu {
     @Column(name = "id_phong")
     private int idPhong;
     @Column(name = "so_phong")
-    private int soPhong;
+    private String soPhong;
 
     @OneToMany(mappedBy = "phongChieu", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Ghe> dsGhe;
@@ -27,7 +27,7 @@ public class PhongChieu {
     public PhongChieu() {
     }
 
-    public PhongChieu(int idPhong, int soPhong) {
+    public PhongChieu(int idPhong, String soPhong) {
         this.idPhong = idPhong;
         this.soPhong = soPhong;
     }

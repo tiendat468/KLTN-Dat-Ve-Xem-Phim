@@ -7,6 +7,7 @@ import java.util.List;
 
 @Service
 public interface PhimService {
+
     public List<Phim> getAllPhim();
 
     public Phim savePhim(Phim phim);

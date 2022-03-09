@@ -27,12 +27,10 @@ public class XuatChieu {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPhim")
-//    @Column(name = "id_phim")
     private Phim phim;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPhong")
-//    @Column(name = "id_phong_chieu")
     private PhongChieu phongChieu;
 
     public XuatChieu() {

@@ -26,12 +26,12 @@ public class PhimDTO {
     private String trangThai;
     private LoaiPhimDTO loaiPhim;
     private List<DienVien> dsDienVien;
-    private Set<XuatChieu> dsXuatChieu;
+
 
     public PhimDTO() {
     }
 
-    public PhimDTO(int idPhim, String tenPhim,String daoDien, int thoiLuong, int doTuoi, Date ngayCongChieu, String quocGia, String tomTat, String trangThai, LoaiPhimDTO loaiPhim, List<DienVien> dsDienVien, Set<XuatChieu> dsXuatChieu) {
+    public PhimDTO(int idPhim, String tenPhim,String daoDien, int thoiLuong, int doTuoi, Date ngayCongChieu, String quocGia, String tomTat, String trangThai, LoaiPhimDTO loaiPhim, List<DienVien> dsDienVien) {
         this.idPhim = idPhim;
         this.tenPhim = tenPhim;
         this.daoDien = daoDien;
@@ -43,6 +43,6 @@ public class PhimDTO {
         this.trangThai = trangThai;
         this.loaiPhim = loaiPhim;
         this.dsDienVien = dsDienVien;
-        this.dsXuatChieu = dsXuatChieu;
+
     }
 }

@@ -78,7 +78,7 @@ public class PhimController {
 
         Set<DienVien> dvs = new HashSet<>();
 
-        PhimDTO phimDTO = new PhimDTO(phim.getIdPhim(),phim.getTenPhim(),phim.getDaoDien(),phim.getThoiLuong(),phim.getDoTuoi(),phim.getNgayCongChieu(),phim.getQuocGia(),phim.getTomTat(),phim.getTrangThai(),changeDTO(phim.getLoaiPhim()),phim.getDsDienVien(),phim.getDsXuatChieu());
+        PhimDTO phimDTO = new PhimDTO(phim.getIdPhim(),phim.getTenPhim(),phim.getDaoDien(),phim.getThoiLuong(),phim.getDoTuoi(),phim.getNgayCongChieu(),phim.getQuocGia(),phim.getTomTat(),phim.getTrangThai(),changeDTO(phim.getLoaiPhim()),phim.getDsDienVien());
         return phimDTO;
     }
     private LoaiPhimDTO changeDTO(LoaiPhim loaiPhim){
