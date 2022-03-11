@@ -1,5 +1,6 @@
 package com.example.datvexemphimonl.service;
 
+import com.example.datvexemphimonl.entity.DTO.KhachHangDTO;
 import com.example.datvexemphimonl.entity.KhachHang;
 import org.springframework.stereotype.Service;
 

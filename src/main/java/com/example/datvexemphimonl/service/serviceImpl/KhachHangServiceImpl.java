@@ -1,7 +1,9 @@
-package com.example.datvexemphimonl.service;
+package com.example.datvexemphimonl.service.serviceImpl;
 
+import com.example.datvexemphimonl.entity.DTO.KhachHangDTO;
 import com.example.datvexemphimonl.entity.KhachHang;
 import com.example.datvexemphimonl.repository.KhachHangRepository;
+import com.example.datvexemphimonl.service.KhachHangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

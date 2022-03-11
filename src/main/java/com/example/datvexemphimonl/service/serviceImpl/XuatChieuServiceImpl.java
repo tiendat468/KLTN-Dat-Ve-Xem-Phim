@@ -1,12 +1,13 @@
-package com.example.datvexemphimonl.service;
+package com.example.datvexemphimonl.service.serviceImpl;
 
 import com.example.datvexemphimonl.entity.XuatChieu;
 import com.example.datvexemphimonl.repository.XuatChieuRepository;
+import com.example.datvexemphimonl.service.XuatChieuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class XuatChieuServiceImpl implements XuatChieuService{
+public class XuatChieuServiceImpl implements XuatChieuService {
 
     @Autowired
     private XuatChieuRepository xuatChieuRepository;
