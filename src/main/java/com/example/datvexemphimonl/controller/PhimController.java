@@ -5,6 +5,7 @@ import com.example.datvexemphimonl.entity.DTO.PhimDTO;
 import com.example.datvexemphimonl.entity.DienVien;
 import com.example.datvexemphimonl.entity.LoaiPhim;
 import com.example.datvexemphimonl.entity.Phim;
+import com.example.datvexemphimonl.service.ChangeDTOService;
 import com.example.datvexemphimonl.service.DienVienService;
 import com.example.datvexemphimonl.service.PhimService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +26,15 @@ public class PhimController {
     @Autowired
     private DienVienService dienVienService;
 
+    @Autowired
+    private ChangeDTOService changeDTOService;
 
     @GetMapping()
     public List<PhimDTO> getAllPhim() {
         List<Phim> phims = phimService.getAllPhim();
         List<PhimDTO> list = new ArrayList<>();
         phims.forEach(phim -> {
-            list.add(changeDTO(phim));
+            list.add(changeDTOService.changeDTO(phim));
         });
 
         return list;
@@ -48,13 +51,13 @@ public class PhimController {
         }
 
         Phim p = phimService.savePhim(phim);
-        return changeDTO(p);
+        return changeDTOService.changeDTO(p);
     }
 
     @GetMapping("/{id}")
     public PhimDTO getPhim(@PathVariable("id") int id){
-        Phim p = phimService.getPhimById(id);
-        return changeDTO(p);
+        Phim phim = phimService.getPhimById(id);
+        return changeDTOService.changeDTO(phim);
     }
 
     @PutMapping("/{id}")
@@ -71,20 +74,7 @@ public class PhimController {
 
         Phim p = phimService.updatePhim(phim);
 
-        return changeDTO(p);
+        return changeDTOService.changeDTO(p);
     }
 
-    private PhimDTO changeDTO(Phim phim){
-
-        Set<DienVien> dvs = new HashSet<>();
-
-        PhimDTO phimDTO = new PhimDTO(phim.getIdPhim(),phim.getTenPhim(),phim.getDaoDien(),phim.getThoiLuong(),phim.getDoTuoi(),phim.getNgayCongChieu(),phim.getQuocGia(),phim.getTomTat(),phim.getTrangThai(),changeDTO(phim.getLoaiPhim()),phim.getDsDienVien());
-        return phimDTO;
-    }
-    private LoaiPhimDTO changeDTO(LoaiPhim loaiPhim){
-        LoaiPhimDTO loaiPhimDTO = new LoaiPhimDTO();
-        loaiPhimDTO.setIdLoaiPhim(loaiPhim.getIdLoaiPhim());
-        loaiPhimDTO.setTenLoaiPhim(loaiPhim.getTenLoaiPhim());
-        return loaiPhimDTO;
-    }
 }
