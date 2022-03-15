@@ -38,6 +38,7 @@ public class ChangeDTOServiceImpl implements  ChangeDTOService{
 
         phimDTO.setIdPhim(phim.getIdPhim());
         phimDTO.setTenPhim(phim.getTenPhim());
+        phimDTO.setHinh(phim.getHinh());
         phimDTO.setDaoDien(phim.getDaoDien());
         phimDTO.setThoiLuong(phim.getThoiLuong());
         phimDTO.setDoTuoi(phim.getDoTuoi());

@@ -23,6 +23,9 @@ public class Phim{
     @Column(name = "ten_phim")
     private String tenPhim;
 
+    @Column(name = "hinh")
+    private String hinh;
+
     @Column(name = "dao_dien")
     private String daoDien;
 
@@ -64,15 +67,5 @@ public class Phim{
     public Phim() {
     }
 
-    public Phim(int idPhim, String tenPhim, String daoDien, int thoiLuong, int doTuoi, Date ngayCongChieu, String quocGia, String tomTat, String trangThai) {
-        this.idPhim = idPhim;
-        this.tenPhim = tenPhim;
-        this.daoDien = daoDien;
-        this.thoiLuong = thoiLuong;
-        this.doTuoi = doTuoi;
-        this.ngayCongChieu = ngayCongChieu;
-        this.quocGia = quocGia;
-        this.tomTat = tomTat;
-        this.trangThai = trangThai;
-    }
+
 }
