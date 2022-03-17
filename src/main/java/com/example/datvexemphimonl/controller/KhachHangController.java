@@ -1,6 +1,6 @@
 package com.example.datvexemphimonl.controller;
 
-import com.example.datvexemphimonl.entity.DTO.KhachHangDTO;
+import com.example.datvexemphimonl.entity.DTO.*;
 import com.example.datvexemphimonl.entity.DTO.MainResponse;
 import com.example.datvexemphimonl.entity.KhachHang;
 import com.example.datvexemphimonl.service.ChangeDTOService;

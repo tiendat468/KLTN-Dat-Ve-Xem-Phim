@@ -1,24 +1,30 @@
 package com.example.datvexemphimonl.service;
 
-import com.example.datvexemphimonl.entity.DTO.KhachHangDTO;
+import com.example.datvexemphimonl.entity.DTO.*;
 import com.example.datvexemphimonl.entity.DTO.MainResponse;
 import com.example.datvexemphimonl.entity.KhachHang;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface KhachHangService {
 
-    public KhachHang saveKhachHang(KhachHang khachHang);
 
-    public List<KhachHang> getAllKhachHang();
+    List<KhachHang> getAllKhachHang();
 
-    public KhachHang getKhachHangById(int id);
+    KhachHang getKhachHangById(int id);
 
-    public MainResponse<KhachHangDTO> getDetailKhachHang(int id);
+    KhachHang getKhachHangBySDT(String sdt);
 
-    public KhachHang updateKhachHang(KhachHang khachHang);
+    KhachHang saveKhachHang(KhachHang khachHang);
 
-    public void deleteKhachHang(int id);
+    MainResponse<KhachHangDTO> getDetailKhachHang(int id);
+
+    KhachHang updateKhachHang(KhachHang khachHang);
+
+    void deleteKhachHang(int id);
+
+    Boolean checkExistsKhachHangBySdt(String sdt);
 }
