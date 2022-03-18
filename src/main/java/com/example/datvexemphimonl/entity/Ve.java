@@ -20,7 +20,7 @@ public class Ve {
     private Date ngayXuatVe;
 
     @Enumerated
-    @Column(name = "code_loai_ve")
+    @Column(name = "loai_ve")
     private LoaiVe loaiVe;
 
     @ManyToOne(fetch = FetchType.LAZY)
