@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/loaiPhim")
+@RequestMapping("/api/loaiPhim")
 public class LoaiPhimController {
 
     @Autowired

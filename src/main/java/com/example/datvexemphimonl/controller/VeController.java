@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/ve")
+@RequestMapping("/api/ve")
 public class VeController {
 
     @Autowired

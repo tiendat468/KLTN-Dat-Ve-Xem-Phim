@@ -7,17 +7,12 @@ import com.example.datvexemphimonl.service.ChangeDTOService;
 import com.example.datvexemphimonl.service.KhachHangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.support.HttpRequestHandlerServlet;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpServletResponseWrapper;
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/khachHang")
+@RequestMapping("/api/khachHang")
 public class KhachHangController {
 
     @Autowired
@@ -42,11 +37,6 @@ public class KhachHangController {
         return  changeDTOService.changeDTO(khachHang);
     }
 
-//    @GetMapping("/{id}")
-//    public MainResponse<KhachHangDTO> getKhachHangById(@PathVariable("id") int id) throws Exception{
-//        return khachHangService.getDetailKhachHang(id);
-//    }
-
     @PostMapping
     public KhachHangDTO saveKhachHang(@RequestBody KhachHang khachHang){
         KhachHang kh = khachHangService.saveKhachHang(khachHang);
@@ -57,13 +47,11 @@ public class KhachHangController {
     @PutMapping("/{id}")
     public KhachHangDTO updateKhachHang(@RequestBody KhachHang khachHang){
         KhachHang kh = khachHangService.updateKhachHang(khachHang);
-
         return changeDTOService.changeDTO(kh);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteKhachHang(@PathVariable("id") int id){
-        khachHangService.deleteKhachHang(id);
-        return "Success";
+    public MainResponse<String> deleteKhachHang(@PathVariable("id") int id){
+        return khachHangService.deleteKhachHang(id);
     }
 }
