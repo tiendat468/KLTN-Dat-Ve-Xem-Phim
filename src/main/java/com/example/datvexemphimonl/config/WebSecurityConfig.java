@@ -1,7 +1,6 @@
 package com.example.datvexemphimonl.config;
 
 import com.example.datvexemphimonl.service.auth.KhachHangDetailsServiceImpl;
-import com.example.datvexemphimonl.service.auth.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    UserDetailsServiceImpl userDetailsService;
+    KhachHangDetailsServiceImpl khachHangDetailsService;
 
     @Autowired
     private AuthEntryPointJwt aunthenJwtTokenFilter;
@@ -35,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(khachHangDetailsService).passwordEncoder(passwordEncoder());
     }
 
     private PasswordEncoder passwordEncoder() {

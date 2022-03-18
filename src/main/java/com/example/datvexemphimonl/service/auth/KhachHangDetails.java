@@ -19,10 +19,10 @@ public class KhachHangDetails implements UserDetails {
         this.authorities = authorities;
     }
 
-    public static KhachHangDetails build(KhachHang kh) {
-        List<GrantedAuthority> authorities = kh.getRoles().stream()
+    public static KhachHangDetails build(KhachHang khachHang) {
+        List<GrantedAuthority> authorities = khachHang.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
-        return new KhachHangDetails(kh, authorities);
+        return new KhachHangDetails(khachHang, authorities);
 
     }
 

@@ -7,11 +7,9 @@ import com.example.datvexemphimonl.entity.DTO.auth.SignupRequest;
 import com.example.datvexemphimonl.entity.KhachHang;
 import com.example.datvexemphimonl.entity.Role;
 import com.example.datvexemphimonl.entity.RoleType;
-import com.example.datvexemphimonl.repository.KhachHangRepository;
 import com.example.datvexemphimonl.repository.RoleRepository;
 import com.example.datvexemphimonl.service.KhachHangService;
 import com.example.datvexemphimonl.service.auth.KhachHangDetails;
-import com.example.datvexemphimonl.service.auth.UserDetailsImpl;
 import com.example.datvexemphimonl.util.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,26 +43,26 @@ public class AuthController {
     @Autowired
     JWTUtils jwtUtils;
 
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest) {
-
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getSdtKhachHang(), loginRequest.getMatkhau()));
+                new UsernamePasswordAuthenticationToken(loginRequest.getSdtKhachHang(), loginRequest.getMatKhau()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = jwtUtils.generateJwtToken(authentication);
 
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        KhachHangDetails khachHangDetails = (KhachHangDetails) authentication.getPrincipal();
+        KhachHang khachHang = khachHangService.getKhachHangBySDT(loginRequest.getSdtKhachHang());
 
-        List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
+        List<String> roles = khachHangDetails.getAuthorities().stream().map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(
-                new JwtResponse(jwt, userDetails.getUsername(), userDetails.getSdtKhachHang()));
+                new JwtResponse(jwt, khachHang.getTenKhachHang(), khachHang.getSdt()));
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Validated @RequestBody SignupRequest signupRequest) {
         if (khachHangService.checkExistsKhachHangBySdt(signupRequest.getSdtKhachHang())) {
             return ResponseEntity.badRequest().body(new MessageResponse("E:sdtKhachHang is exists"));
@@ -75,7 +73,6 @@ public class AuthController {
         khachHang.setTenKhachHang(signupRequest.getTenKhachHang());
         khachHang.setSdt(signupRequest.getSdtKhachHang());
         khachHang.setMatKhau(encoder.encode(signupRequest.getMatKhau()));
-        khachHang.setMatKhau(signupRequest.getMatKhau());
         Set<String> srtRoles = signupRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 

@@ -8,10 +8,11 @@ import java.util.List;
 @Getter
 @Setter
 public class JwtResponse {
-	private String token;
-	private String type = "Bearer";
+
 	private String username;
 	private String sdt;
+	private String type = "Bearer";
+	private String token;
 
 	public JwtResponse(String accessToken, String username, String sdt) {
 		this.token = accessToken;
