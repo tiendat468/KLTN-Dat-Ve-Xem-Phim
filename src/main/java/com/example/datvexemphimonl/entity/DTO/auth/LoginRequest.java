@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class LoginRequest {
 
-	private String sdtKhachHang;
+	private String sdt;
 	private String matKhau;
 }
