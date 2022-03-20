@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -36,6 +37,11 @@ public class KhachHang {
 
     @OneToMany(mappedBy = "khachHang", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ve> dsVe;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "khachhang_role", joinColumns = @JoinColumn(name = "id_khach_hang"), inverseJoinColumns = @JoinColumn(name = "id_role"))
+    private Set<Role> roles = new HashSet<>();
+
 
     public KhachHang() {
     }
