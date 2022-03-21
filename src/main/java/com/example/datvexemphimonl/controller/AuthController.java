@@ -37,7 +37,7 @@ public class AuthController {
     @Autowired
     KhachHangService khachHangService;
     @Autowired
-    RoleRepository rolelRepository;
+    RoleRepository roleRepository;
     @Autowired
     PasswordEncoder encoder;
     @Autowired
@@ -45,26 +45,53 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest) {
+<<<<<<< HEAD
+        KhachHang khachHang = new KhachHang();
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getSdt(), loginRequest.getMatKhau()));
+
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            String jwt = jwtUtils.generateJwtToken(authentication);
+
+            KhachHangDetails khachHangDetails = (KhachHangDetails) authentication.getPrincipal();
+=======
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getSdt(), loginRequest.getMatKhau()));
+>>>>>>> c6a80281986b2e6b18c312eeaf8281737e876731
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+            khachHang = khachHangService.getKhachHangBySDT(loginRequest.getSdt());
 
-        String jwt = jwtUtils.generateJwtToken(authentication);
 
+<<<<<<< HEAD
+            return ResponseEntity.ok(
+                    new JwtResponse(khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
+        } catch (Exception ex) {
+
+
+            return ResponseEntity.badRequest().body(new MessageResponse("E:khachhang sai"));
+        }
+=======
         KhachHangDetails khachHangDetails = (KhachHangDetails) authentication.getPrincipal();
         KhachHang khachHang = khachHangService.getKhachHangBySDT(loginRequest.getSdt());
+>>>>>>> c6a80281986b2e6b18c312eeaf8281737e876731
 
-        List<String> roles = khachHangDetails.getAuthorities().stream().map(item -> item.getAuthority())
-                .collect(Collectors.toList());
 
+<<<<<<< HEAD
+=======
         return ResponseEntity.ok(
                 new JwtResponse(khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
+>>>>>>> c6a80281986b2e6b18c312eeaf8281737e876731
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Validated @RequestBody SignupRequest signupRequest) {
         if (khachHangService.checkExistsKhachHangBySdt(signupRequest.getSdt())) {
+<<<<<<< HEAD
+
+=======
+>>>>>>> c6a80281986b2e6b18c312eeaf8281737e876731
             return ResponseEntity.badRequest().body(new MessageResponse("E:sdtKhachHang is exists"));
         }
 
@@ -76,18 +103,18 @@ public class AuthController {
         Set<String> srtRoles = signupRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
-        if (srtRoles.size() == 0 ) {
-            Role userRole = rolelRepository.findByName(RoleType.ROLE_USER).get();
+        if (srtRoles.size() == 0) {
+            Role userRole = roleRepository.findByName(RoleType.ROLE_USER).get();
             roles.add(userRole);
         } else {
             srtRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
-                        Role adminRole = rolelRepository.findByName(RoleType.ROLE_ADMIN).get();
+                        Role adminRole = roleRepository.findByName(RoleType.ROLE_ADMIN).get();
                         roles.add(adminRole);
                         break;
                     default:
-                        Role userRole = rolelRepository.findByName(RoleType.ROLE_USER).get();
+                        Role userRole = roleRepository.findByName(RoleType.ROLE_USER).get();
                         roles.add(userRole);
                         break;
                 }

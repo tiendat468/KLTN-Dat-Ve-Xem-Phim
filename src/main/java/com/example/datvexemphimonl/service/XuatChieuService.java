@@ -1,14 +1,22 @@
 package com.example.datvexemphimonl.service;
 
+import com.example.datvexemphimonl.entity.Phim;
 import com.example.datvexemphimonl.entity.XuatChieu;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
 
 @Service
 public interface XuatChieuService {
 
-    public XuatChieu saveXuatChieu(XuatChieu xuatChieu);
+    XuatChieu saveXuatChieu(XuatChieu xuatChieu);
 
-    public XuatChieu getXuatChieuById(int id);
+    XuatChieu getXuatChieuById(int id);
 
-    public XuatChieu updateXuatChieu(XuatChieu xuatChieu);
+    XuatChieu updateXuatChieu(XuatChieu xuatChieu);
+
+    List<XuatChieu> getXuatChieuByPhim(Phim phim);
+
+    List<XuatChieu> getXuatChieuByPhimAndDate(Phim phim,Date date);
 }
