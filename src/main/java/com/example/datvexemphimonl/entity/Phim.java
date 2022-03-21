@@ -47,13 +47,7 @@ public class Phim{
     @Column(name = "trang_thai")
     private String trangThai;
 
-//    @ElementCollection
-//    @CollectionTable(
-//            name = "DienVien",
-//            joinColumns = @JoinColumn(name="id_phim")
-//    )
-//    @Column(name = "dien_vien", nullable = false)
-    @OneToMany
+   @OneToMany
     private List<DienVien> dsDienVien;
 
     @NotNull

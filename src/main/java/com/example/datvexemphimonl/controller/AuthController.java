@@ -76,7 +76,7 @@ public class AuthController {
         Set<String> srtRoles = signupRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
-        if (srtRoles.size() == 0) {
+        if (srtRoles.size() == 0 ) {
             Role userRole = rolelRepository.findByName(RoleType.ROLE_USER).get();
             roles.add(userRole);
         } else {
