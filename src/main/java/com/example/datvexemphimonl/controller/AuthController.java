@@ -46,32 +46,32 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getSdtKhachHang(), loginRequest.getMatKhau()));
+                new UsernamePasswordAuthenticationToken(loginRequest.getSdt(), loginRequest.getMatKhau()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = jwtUtils.generateJwtToken(authentication);
 
         KhachHangDetails khachHangDetails = (KhachHangDetails) authentication.getPrincipal();
-        KhachHang khachHang = khachHangService.getKhachHangBySDT(loginRequest.getSdtKhachHang());
+        KhachHang khachHang = khachHangService.getKhachHangBySDT(loginRequest.getSdt());
 
         List<String> roles = khachHangDetails.getAuthorities().stream().map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(
-                new JwtResponse(jwt, khachHang.getTenKhachHang(), khachHang.getSdt()));
+                new JwtResponse(khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Validated @RequestBody SignupRequest signupRequest) {
-        if (khachHangService.checkExistsKhachHangBySdt(signupRequest.getSdtKhachHang())) {
+        if (khachHangService.checkExistsKhachHangBySdt(signupRequest.getSdt())) {
             return ResponseEntity.badRequest().body(new MessageResponse("E:sdtKhachHang is exists"));
         }
 
         KhachHang khachHang = new KhachHang();
 
         khachHang.setTenKhachHang(signupRequest.getTenKhachHang());
-        khachHang.setSdt(signupRequest.getSdtKhachHang());
+        khachHang.setSdt(signupRequest.getSdt());
         khachHang.setMatKhau(encoder.encode(signupRequest.getMatKhau()));
         Set<String> srtRoles = signupRequest.getRoles();
         Set<Role> roles = new HashSet<>();
