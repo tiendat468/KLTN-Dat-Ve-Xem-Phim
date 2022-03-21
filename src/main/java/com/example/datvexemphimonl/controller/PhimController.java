@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/phim")
+@RequestMapping("/api/phim")
 public class PhimController {
 
     @Autowired

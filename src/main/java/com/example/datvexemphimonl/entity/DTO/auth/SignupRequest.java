@@ -10,7 +10,7 @@ import java.util.Set;
 public class SignupRequest {
 
 	private String tenKhachHang;
-	private String sdtKhachHang;
+	private String sdt;
 	private String matKhau;
 	private Set<String> roles;
 

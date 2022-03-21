@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/khachHang")
+@RequestMapping("/api/khachHang")
 public class KhachHangController {
 
     @Autowired
@@ -41,6 +41,7 @@ public class KhachHangController {
         KhachHang khachHang = khachHangService.getKhachHangById(id);
         return  changeDTOService.changeDTO(khachHang);
     }
+
 
 //    @GetMapping("/{id}")
 //    public MainResponse<KhachHangDTO> getKhachHangById(@PathVariable("id") int id) throws Exception{
