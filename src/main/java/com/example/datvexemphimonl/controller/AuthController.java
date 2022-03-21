@@ -45,6 +45,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest) {
+<<<<<<< HEAD
         KhachHang khachHang = new KhachHang();
         try {
             Authentication authentication = authenticationManager.authenticate(
@@ -55,10 +56,15 @@ public class AuthController {
             String jwt = jwtUtils.generateJwtToken(authentication);
 
             KhachHangDetails khachHangDetails = (KhachHangDetails) authentication.getPrincipal();
+=======
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequest.getSdt(), loginRequest.getMatKhau()));
+>>>>>>> c6a80281986b2e6b18c312eeaf8281737e876731
 
             khachHang = khachHangService.getKhachHangBySDT(loginRequest.getSdt());
 
 
+<<<<<<< HEAD
             return ResponseEntity.ok(
                     new JwtResponse(khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
         } catch (Exception ex) {
@@ -66,14 +72,26 @@ public class AuthController {
 
             return ResponseEntity.badRequest().body(new MessageResponse("E:khachhang sai"));
         }
+=======
+        KhachHangDetails khachHangDetails = (KhachHangDetails) authentication.getPrincipal();
+        KhachHang khachHang = khachHangService.getKhachHangBySDT(loginRequest.getSdt());
+>>>>>>> c6a80281986b2e6b18c312eeaf8281737e876731
 
 
+<<<<<<< HEAD
+=======
+        return ResponseEntity.ok(
+                new JwtResponse(khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
+>>>>>>> c6a80281986b2e6b18c312eeaf8281737e876731
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Validated @RequestBody SignupRequest signupRequest) {
         if (khachHangService.checkExistsKhachHangBySdt(signupRequest.getSdt())) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c6a80281986b2e6b18c312eeaf8281737e876731
             return ResponseEntity.badRequest().body(new MessageResponse("E:sdtKhachHang is exists"));
         }
 
