@@ -12,7 +12,6 @@ public class KhachHangDTO {
     private String tenKhachHang;
     private Date ngaySinh;
     private String sdt;
-    private String matKhau;
     private String thongTinThanhToan;
 
     public KhachHangDTO() {

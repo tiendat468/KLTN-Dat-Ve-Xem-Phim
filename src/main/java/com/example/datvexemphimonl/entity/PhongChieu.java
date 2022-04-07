@@ -15,8 +15,8 @@ public class PhongChieu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_phong")
     private int idPhong;
-    @Column(name = "so_phong")
-    private String soPhong;
+    @Column(name = "ten_phong")
+    private String tenPhong;
 
     @OneToMany(mappedBy = "phongChieu", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Ghe> dsGhe;
@@ -27,8 +27,8 @@ public class PhongChieu {
     public PhongChieu() {
     }
 
-    public PhongChieu(int idPhong, String soPhong) {
+    public PhongChieu(int idPhong, String tenPhong) {
         this.idPhong = idPhong;
-        this.soPhong = soPhong;
+        this.tenPhong = tenPhong;
     }
 }

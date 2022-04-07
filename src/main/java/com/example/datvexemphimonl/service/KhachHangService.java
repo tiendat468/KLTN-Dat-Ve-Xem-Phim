@@ -20,11 +20,9 @@ public interface KhachHangService {
 
     KhachHang saveKhachHang(KhachHang khachHang);
 
-    MainResponse<KhachHangDTO> getDetailKhachHang(int id);
-
     KhachHang updateKhachHang(KhachHang khachHang);
 
-    void deleteKhachHang(int id);
+    MainResponse<String> deleteKhachHang(int id);
 
     Boolean checkExistsKhachHangBySdt(String sdt);
 }
