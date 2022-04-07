@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -25,8 +26,18 @@ public class VeController {
     private ChangeDTOService changeDTOService;
 
     @GetMapping("/{id}")
-    public VeDTO getVeById(@PathVariable("id")int id){
+    public VeDTO getVeById(@PathVariable("id") int id) {
         Ve ve = veService.getVeById(id);
         return changeDTOService.changeDTO(ve);
+    }
+
+    @GetMapping("/xuatChieu/{id}")
+    public List<VeDTO> getVeByXuatChieu(@PathVariable("id") int id) {
+        List<Ve> ves = veService.getVeByXuatChieu(id);
+        List<VeDTO> veDTOS = new ArrayList<>();
+        ves.forEach(ve -> {
+            veDTOS.add(changeDTOService.changeDTO(ve));
+        });
+        return veDTOS;
     }
 }

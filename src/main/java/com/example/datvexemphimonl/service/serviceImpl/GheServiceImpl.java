@@ -1,43 +1,38 @@
 package com.example.datvexemphimonl.service.serviceImpl;
 
+import com.example.datvexemphimonl.entity.Ghe;
 import com.example.datvexemphimonl.entity.Ve;
 import com.example.datvexemphimonl.entity.XuatChieu;
+import com.example.datvexemphimonl.repository.GheRepository;
 import com.example.datvexemphimonl.repository.VeRepository;
 import com.example.datvexemphimonl.repository.XuatChieuRepository;
-import com.example.datvexemphimonl.service.VeService;
+import com.example.datvexemphimonl.service.GheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
-public class VeServiceImpl implements VeService {
+public class GheServiceImpl implements GheService {
 
     @Autowired
-    private VeRepository veRepository;
+    private GheRepository gheRepository;
 
     @Autowired
     private XuatChieuRepository xuatChieuRepository;
 
-    @Override
-    public Ve getVeById(int id) {
-        return veRepository.getById(id);
-    }
+    @Autowired
+    private VeRepository veRepository;
 
     @Override
-    public Ve saveVe(Ve ve) {
-        return veRepository.save(ve);
-    }
-
-    @Override
-    public List<Ve> getVeByXuatChieu(int idXuatChieu) {
+    public List<Ghe> getGheByXuatChieu(int idXuatChieu) {
         Optional<XuatChieu> optionalXuatChieu = xuatChieuRepository.findById(idXuatChieu);
 
-        if (!optionalXuatChieu.isPresent()){
+        if (!optionalXuatChieu.isPresent()) {
             return null;
         }
         XuatChieu xuatChieu = optionalXuatChieu.get();
-        return veRepository.getVesByXuatChieuIdXuatChieu(xuatChieu.getIdXuatChieu());
+        List<Ghe> list = gheRepository.getGhesByPhongChieu_IdPhong(xuatChieu.getPhongChieu().getIdPhong());
+        return list;
     }
 }
