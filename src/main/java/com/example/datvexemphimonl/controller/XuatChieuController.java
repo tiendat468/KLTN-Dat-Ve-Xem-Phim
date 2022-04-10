@@ -11,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -55,25 +53,62 @@ public class XuatChieuController {
         return xuatChieuDTOS;
     }
 
-    @SneakyThrows
-    @GetMapping("/ngayChieu/{id}")
-    public List<XuatChieuDTO> getXuatChieuByPhimAndDate(@PathVariable("id") Integer idPhim, Date ngayChieu) throws ParseException {
-//        ngayChieu = new Date(2022,03,20);
-        System.out.println("Voo dc r nef");
-        SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd");
-        ngayChieu = a.parse("2022-03-20");
-//        System.out.println(ngayChieu.toString());
+//    @SneakyThrows
+//    @GetMapping("/ngayChieu/{id}")
+//    public List<XuatChieuDTO> getXuatChieuByPhimAndDate(@PathVariable("id") Integer idPhim,LocalDate ngayChieu) throws ParseException {
+////        ngayChieu = new Date(2022,03,20);
+//        System.out.println("Voo dc r nef");
+//        SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd");
+//        ngayChieu = a.parse("2022-03-20");
+////        System.out.println(ngayChieu.toString());
+//        Phim phim = phimService.getPhimById(idPhim);
+//        List<XuatChieu> xuatChieus = xuatChieuService.getXuatChieuByPhimAndDate(phim, ngayChieu);
+//        List<XuatChieuDTO> xuatChieuDTOS = new ArrayList<>();
+//        xuatChieus.forEach(xuatChieu -> {
+//
+//            System.out.println(xuatChieu.getNgayChieu().toString());
+//            XuatChieuDTO xuatChieuDTO = changeDTOService.changeDTO(xuatChieu);
+//            xuatChieuDTOS.add(xuatChieuDTO);
+//        });
+//        return xuatChieuDTOS;
+//    }
+//    @SneakyThrows
+//    @GetMapping("/{ngayChieu}/{id}")
+//    public List<XuatChieuDTO> getXuatChieuByIdPhimAndDate(@PathVariable("id") Integer idPhim,@PathVariable("ngayChieu") LocalDate ngayChieu) throws ParseException {
+//        List<String> times = xuatChieuService.getXuatChieuByIdPhimAndDate(idPhim,ngayChieu);
+//        List<XuatChieuDTO> xuatChieuDTOS = new ArrayList<>();
+//        xuatChieus.forEach(xuatChieu -> {
+//            System.out.println(xuatChieu.getNgayChieu().toString());
+//            XuatChieuDTO xuatChieuDTO = changeDTOService.changeDTO(xuatChieu);
+//            xuatChieuDTOS.add(xuatChieuDTO);
+//        });
+//        return xuatChieuDTOS;
+//    }
+@SneakyThrows
+@GetMapping("/{ngayChieu}/{id}")
+public List<String> getXuatChieuByIdPhimAndDate(@PathVariable("id") Integer idPhim,@PathVariable("ngayChieu") String ngayChieu) throws ParseException {
+    try{
         Phim phim = phimService.getPhimById(idPhim);
-        List<XuatChieu> xuatChieus = xuatChieuService.getXuatChieuByPhimAndDate(phim, ngayChieu);
-        List<XuatChieuDTO> xuatChieuDTOS = new ArrayList<>();
+        LocalDate ngayChieu1  = LocalDate.parse(ngayChieu);
+        List<XuatChieu> xuatChieus = xuatChieuService.getXuatChieuByPhimAndDate(phim, ngayChieu1);
+        List<String> times = new ArrayList<>();
         xuatChieus.forEach(xuatChieu -> {
-
-            System.out.println(xuatChieu.getNgayChieu().toString());
-            XuatChieuDTO xuatChieuDTO = changeDTOService.changeDTO(xuatChieu);
-            xuatChieuDTOS.add(xuatChieuDTO);
+            times.add(xuatChieu.getThoiGianBatDau());
+            System.out.println(xuatChieu.getThoiGianBatDau());
         });
-        return xuatChieuDTOS;
+//    List<XuatChieuDTO> xuatChieuDTOS = new ArrayList<>();
+//    xuatChieus.forEach(xuatChieu -> {
+//        System.out.println(xuatChieu.getNgayChieu().toString());
+//        XuatChieuDTO xuatChieuDTO = changeDTOService.changeDTO(xuatChieu);
+//        xuatChieuDTOS.add(xuatChieuDTO);
+//    });
+
+        return times;
+    }catch (Exception e){
+        e.printStackTrace();
     }
-
-
+    return null;
 }
+
+
+    }

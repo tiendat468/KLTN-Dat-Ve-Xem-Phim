@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -21,7 +22,7 @@ public class PhimDTO {
     private String daoDien;
     private int thoiLuong;
     private int doTuoi;
-    private Date ngayCongChieu;
+    private LocalDate ngayCongChieu;
     private String quocGia;
     private String tomTat;
     private String trangThai;

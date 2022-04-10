@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -12,7 +13,7 @@ import java.util.Date;
 public class VeDTO {
 
     private int idVe;
-    private Date ngayXuatVe;
+    private LocalDate ngayXuatVe;
     private LoaiVe loaiVe;
     private KhachHangDTO khachHang;
     private GheDTO ghe;

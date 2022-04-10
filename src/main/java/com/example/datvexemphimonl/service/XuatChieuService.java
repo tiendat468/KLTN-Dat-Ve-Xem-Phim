@@ -4,6 +4,7 @@ import com.example.datvexemphimonl.entity.Phim;
 import com.example.datvexemphimonl.entity.XuatChieu;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -18,5 +19,8 @@ public interface XuatChieuService {
 
     List<XuatChieu> getXuatChieuByPhim(Phim phim);
 
-    List<XuatChieu> getXuatChieuByPhimAndDate(Phim phim,Date date);
+    List<XuatChieu> getXuatChieuByPhimAndDate(Phim phim,LocalDate date);
+
+//    //Nhi
+//    List<XuatChieu> getXuatChieuByIdPhimAndDate(Integer movieId, LocalDate date);
 }

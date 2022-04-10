@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -36,7 +37,7 @@ public class Phim{
     private int doTuoi;
 
     @Column(name = "ngay_cong_chieu")
-    private Date ngayCongChieu;
+    private LocalDate ngayCongChieu;
 
     @Column(name = "quoc_gia")
     private String quocGia;

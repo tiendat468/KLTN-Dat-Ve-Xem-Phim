@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -17,7 +18,7 @@ public class Ve {
     private int idVe;
 
     @Column(name = "ngay_xuat_ve")
-    private Date ngayXuatVe;
+    private LocalDate ngayXuatVe;
 
     @Enumerated
     @Column(name = "loai_ve")
@@ -38,7 +39,7 @@ public class Ve {
     public Ve() {
     }
 
-    public Ve(int idVe, Date ngayXuatVe, LoaiVe loaiVe) {
+    public Ve(int idVe, LocalDate ngayXuatVe, LoaiVe loaiVe) {
         this.idVe = idVe;
         this.ngayXuatVe = ngayXuatVe;
         this.loaiVe = loaiVe;

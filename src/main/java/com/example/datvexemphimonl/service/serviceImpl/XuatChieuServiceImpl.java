@@ -7,6 +7,7 @@ import com.example.datvexemphimonl.service.XuatChieuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,7 +39,7 @@ public class XuatChieuServiceImpl implements XuatChieuService {
     }
 
     @Override
-    public List<XuatChieu> getXuatChieuByPhimAndDate(Phim phim, Date date) {
+    public List<XuatChieu> getXuatChieuByPhimAndDate(Phim phim, LocalDate date) {
         List<XuatChieu> xuatChieus = xuatChieuRepository.getXuatChieuByPhim(phim);
         List<XuatChieu> result = new ArrayList<>();
         xuatChieus.forEach(xuatChieu -> {
@@ -48,5 +49,10 @@ public class XuatChieuServiceImpl implements XuatChieuService {
         });
         return result;
     }
+
+//    @Override
+//    public List<XuatChieu> getXuatChieuByIdPhimAndDate(Integer movieId, LocalDate date) {
+//        return xuatChieuRepository.getXuatChieuByIdPhimAndDate(movieId,date);
+//    }
 
 }

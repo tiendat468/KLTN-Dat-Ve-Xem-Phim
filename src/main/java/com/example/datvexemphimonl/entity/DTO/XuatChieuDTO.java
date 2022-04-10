@@ -4,6 +4,7 @@ import com.example.datvexemphimonl.entity.PhongChieu;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -11,7 +12,7 @@ import java.util.Date;
 public class XuatChieuDTO {
 
     private int idXuatChieu;
-    private Date ngayChieu;
+    private LocalDate ngayChieu;
     private String thoiGianBatDau;
     private String thoiGianKetThuc;
     private PhimDTO phim;

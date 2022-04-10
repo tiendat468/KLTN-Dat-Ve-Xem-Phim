@@ -4,7 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Entity
 @Getter
@@ -17,7 +18,7 @@ public class XuatChieu {
     private int idXuatChieu;
 
     @Column(name = "ngay_chieu")
-    private Date ngayChieu;
+    private LocalDate ngayChieu;
 
     @Column(name = "thoi_gian_bat_dau")
     private String thoiGianBatDau;
@@ -36,7 +37,7 @@ public class XuatChieu {
     public XuatChieu() {
     }
 
-    public XuatChieu(int idXuatChieu, Date ngayChieu, String thoiGianBatDau, String thoiGianKetThuc) {
+    public XuatChieu(int idXuatChieu, LocalDate ngayChieu, String thoiGianBatDau, String thoiGianKetThuc) {
         this.idXuatChieu = idXuatChieu;
         this.ngayChieu = ngayChieu;
         this.thoiGianBatDau = thoiGianBatDau;

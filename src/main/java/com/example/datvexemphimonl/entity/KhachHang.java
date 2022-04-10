@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +25,7 @@ public class KhachHang {
     private String tenKhachHang;
 
     @Column(name = "ngay_sinh")
-    private Date ngaySinh;
+    private LocalDate ngaySinh;
 
     @Column(name = "sdt")
     private String sdt;
@@ -46,12 +47,14 @@ public class KhachHang {
     public KhachHang() {
     }
 
-    public KhachHang(int idKhachHang, String tenKhachHang, Date ngaySinh, String sdt, String matKhau, String thongTinThanhToan) {
+    public KhachHang(int idKhachHang, String tenKhachHang, LocalDate ngaySinh, String sdt, String matKhau, String thongTinThanhToan, List<Ve> dsVe, Set<Role> roles) {
         this.idKhachHang = idKhachHang;
         this.tenKhachHang = tenKhachHang;
         this.ngaySinh = ngaySinh;
         this.sdt = sdt;
         this.matKhau = matKhau;
         this.thongTinThanhToan = thongTinThanhToan;
+        this.dsVe = dsVe;
+        this.roles = roles;
     }
 }
