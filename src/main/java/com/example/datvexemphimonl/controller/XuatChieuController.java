@@ -94,7 +94,7 @@ public List<String> getXuatChieuByIdPhimAndDate(@PathVariable("id") Integer idPh
         List<String> times = new ArrayList<>();
         xuatChieus.forEach(xuatChieu -> {
             times.add(xuatChieu.getThoiGianBatDau());
-            System.out.println(xuatChieu.getThoiGianBatDau());
+//            System.out.println(xuatChieu.getThoiGianBatDau());
         });
 //    List<XuatChieuDTO> xuatChieuDTOS = new ArrayList<>();
 //    xuatChieus.forEach(xuatChieu -> {
@@ -102,12 +102,12 @@ public List<String> getXuatChieuByIdPhimAndDate(@PathVariable("id") Integer idPh
 //        XuatChieuDTO xuatChieuDTO = changeDTOService.changeDTO(xuatChieu);
 //        xuatChieuDTOS.add(xuatChieuDTO);
 //    });
-
+        System.out.println(times);
         return times;
     }catch (Exception e){
         e.printStackTrace();
+        return null;
     }
-    return null;
 }
 
 
