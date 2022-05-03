@@ -21,4 +21,53 @@ public class VeDTO {
 
     public VeDTO() {
     }
+
+	public int getIdVe() {
+		return idVe;
+	}
+
+	public void setIdVe(int idVe) {
+		this.idVe = idVe;
+	}
+
+	public LocalDate getNgayXuatVe() {
+		return ngayXuatVe;
+	}
+
+	public void setNgayXuatVe(LocalDate ngayXuatVe) {
+		this.ngayXuatVe = ngayXuatVe;
+	}
+
+	public LoaiVe getLoaiVe() {
+		return loaiVe;
+	}
+
+	public void setLoaiVe(LoaiVe loaiVe) {
+		this.loaiVe = loaiVe;
+	}
+
+	public KhachHangDTO getKhachHang() {
+		return khachHang;
+	}
+
+	public void setKhachHang(KhachHangDTO khachHang) {
+		this.khachHang = khachHang;
+	}
+
+	public GheDTO getGhe() {
+		return ghe;
+	}
+
+	public void setGhe(GheDTO ghe) {
+		this.ghe = ghe;
+	}
+
+	public XuatChieuDTO getXuatChieu() {
+		return xuatChieu;
+	}
+
+	public void setXuatChieu(XuatChieuDTO xuatChieu) {
+		this.xuatChieu = xuatChieu;
+	}
+    
 }

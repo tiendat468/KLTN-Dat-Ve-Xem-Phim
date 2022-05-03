@@ -44,4 +44,53 @@ public class Ve {
         this.ngayXuatVe = ngayXuatVe;
         this.loaiVe = loaiVe;
     }
+
+	public int getIdVe() {
+		return idVe;
+	}
+
+	public void setIdVe(int idVe) {
+		this.idVe = idVe;
+	}
+
+	public LocalDate getNgayXuatVe() {
+		return ngayXuatVe;
+	}
+
+	public void setNgayXuatVe(LocalDate ngayXuatVe) {
+		this.ngayXuatVe = ngayXuatVe;
+	}
+
+	public LoaiVe getLoaiVe() {
+		return loaiVe;
+	}
+
+	public void setLoaiVe(LoaiVe loaiVe) {
+		this.loaiVe = loaiVe;
+	}
+
+	public KhachHang getKhachHang() {
+		return khachHang;
+	}
+
+	public void setKhachHang(KhachHang khachHang) {
+		this.khachHang = khachHang;
+	}
+
+	public Ghe getGhe() {
+		return ghe;
+	}
+
+	public void setGhe(Ghe ghe) {
+		this.ghe = ghe;
+	}
+
+	public XuatChieu getXuatChieu() {
+		return xuatChieu;
+	}
+
+	public void setXuatChieu(XuatChieu xuatChieu) {
+		this.xuatChieu = xuatChieu;
+	}
+    
 }

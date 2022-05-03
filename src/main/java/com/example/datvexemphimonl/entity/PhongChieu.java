@@ -31,4 +31,37 @@ public class PhongChieu {
         this.idPhong = idPhong;
         this.tenPhong = tenPhong;
     }
+
+	public int getIdPhong() {
+		return idPhong;
+	}
+
+	public void setIdPhong(int idPhong) {
+		this.idPhong = idPhong;
+	}
+
+	public String getTenPhong() {
+		return tenPhong;
+	}
+
+	public void setTenPhong(String tenPhong) {
+		this.tenPhong = tenPhong;
+	}
+
+	public Set<Ghe> getDsGhe() {
+		return dsGhe;
+	}
+
+	public void setDsGhe(Set<Ghe> dsGhe) {
+		this.dsGhe = dsGhe;
+	}
+
+	public Set<XuatChieu> getDsXuatChieu() {
+		return dsXuatChieu;
+	}
+
+	public void setDsXuatChieu(Set<XuatChieu> dsXuatChieu) {
+		this.dsXuatChieu = dsXuatChieu;
+	}
+    
 }

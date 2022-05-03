@@ -38,4 +38,11 @@ public class PhimServiceImpl implements PhimService {
     public Phim updatePhim(Phim phim) {
         return phimRepository.save(phim);
     }
+
+	@Override
+	public List<Phim> searchPhim(String search) {
+		// TODO Auto-generated method stub
+		return phimRepository.findPhimBySearch("%"+search+"%");
+	}
+
 }

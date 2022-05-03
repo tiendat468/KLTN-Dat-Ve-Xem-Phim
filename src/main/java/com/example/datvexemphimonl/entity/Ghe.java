@@ -34,4 +34,37 @@ public class Ghe {
         this.hangGhe = hangGhe;
         this.cotGhe = cotGhe;
     }
+
+	public int getIdGhe() {
+		return idGhe;
+	}
+
+	public void setIdGhe(int idGhe) {
+		this.idGhe = idGhe;
+	}
+
+	public String getHangGhe() {
+		return hangGhe;
+	}
+
+	public void setHangGhe(String hangGhe) {
+		this.hangGhe = hangGhe;
+	}
+
+	public String getCotGhe() {
+		return cotGhe;
+	}
+
+	public void setCotGhe(String cotGhe) {
+		this.cotGhe = cotGhe;
+	}
+
+	public PhongChieu getPhongChieu() {
+		return phongChieu;
+	}
+
+	public void setPhongChieu(PhongChieu phongChieu) {
+		this.phongChieu = phongChieu;
+	}
+    
 }

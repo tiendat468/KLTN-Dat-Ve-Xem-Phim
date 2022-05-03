@@ -17,4 +17,6 @@ public interface PhimService {
     public void deletePhim(int id);
 
     public Phim updatePhim(Phim phim);
+    
+    public List<Phim> searchPhim(String search);
 }

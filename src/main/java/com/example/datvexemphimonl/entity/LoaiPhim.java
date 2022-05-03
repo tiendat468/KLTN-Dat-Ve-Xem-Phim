@@ -28,4 +28,29 @@ public class LoaiPhim {
         this.idLoaiPhim = idLoaiPhim;
         this.tenLoaiPhim = tenLoaiPhim;
     }
+
+	public int getIdLoaiPhim() {
+		return idLoaiPhim;
+	}
+
+	public void setIdLoaiPhim(int idLoaiPhim) {
+		this.idLoaiPhim = idLoaiPhim;
+	}
+
+	public String getTenLoaiPhim() {
+		return tenLoaiPhim;
+	}
+
+	public void setTenLoaiPhim(String tenLoaiPhim) {
+		this.tenLoaiPhim = tenLoaiPhim;
+	}
+
+	public List<Phim> getDsPhim() {
+		return dsPhim;
+	}
+
+	public void setDsPhim(List<Phim> dsPhim) {
+		this.dsPhim = dsPhim;
+	}
+    
 }

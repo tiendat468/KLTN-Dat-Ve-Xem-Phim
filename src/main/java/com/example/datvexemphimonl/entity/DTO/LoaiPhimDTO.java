@@ -17,4 +17,22 @@ public class LoaiPhimDTO {
         this.idLoaiPhim = idLoaiPhim;
         this.tenLoaiPhim = tenLoaiPhim;
     }
+
+	public int getIdLoaiPhim() {
+		return idLoaiPhim;
+	}
+
+	public void setIdLoaiPhim(int idLoaiPhim) {
+		this.idLoaiPhim = idLoaiPhim;
+	}
+
+	public String getTenLoaiPhim() {
+		return tenLoaiPhim;
+	}
+
+	public void setTenLoaiPhim(String tenLoaiPhim) {
+		this.tenLoaiPhim = tenLoaiPhim;
+	}
+    
 }
+

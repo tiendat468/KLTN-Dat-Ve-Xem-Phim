@@ -57,4 +57,69 @@ public class KhachHang {
         this.dsVe = dsVe;
         this.roles = roles;
     }
+
+	public int getIdKhachHang() {
+		return idKhachHang;
+	}
+
+	public void setIdKhachHang(int idKhachHang) {
+		this.idKhachHang = idKhachHang;
+	}
+
+	public String getTenKhachHang() {
+		return tenKhachHang;
+	}
+
+	public void setTenKhachHang(String tenKhachHang) {
+		this.tenKhachHang = tenKhachHang;
+	}
+
+	public LocalDate getNgaySinh() {
+		return ngaySinh;
+	}
+
+	public void setNgaySinh(LocalDate ngaySinh) {
+		this.ngaySinh = ngaySinh;
+	}
+
+	public String getSdt() {
+		return sdt;
+	}
+
+	public void setSdt(String sdt) {
+		this.sdt = sdt;
+	}
+
+	public String getMatKhau() {
+		return matKhau;
+	}
+
+	public void setMatKhau(String matKhau) {
+		this.matKhau = matKhau;
+	}
+
+	public String getThongTinThanhToan() {
+		return thongTinThanhToan;
+	}
+
+	public void setThongTinThanhToan(String thongTinThanhToan) {
+		this.thongTinThanhToan = thongTinThanhToan;
+	}
+
+	public List<Ve> getDsVe() {
+		return dsVe;
+	}
+
+	public void setDsVe(List<Ve> dsVe) {
+		this.dsVe = dsVe;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+    
 }

@@ -26,4 +26,21 @@ public class DienVien {
         this.idDienVien = idDienVien;
         this.tenDienVien = tenDienVien;
     }
+
+	public int getIdDienVien() {
+		return idDienVien;
+	}
+
+	public void setIdDienVien(int idDienVien) {
+		this.idDienVien = idDienVien;
+	}
+
+	public String getTenDienVien() {
+		return tenDienVien;
+	}
+
+	public void setTenDienVien(String tenDienVien) {
+		this.tenDienVien = tenDienVien;
+	}
+    
 }

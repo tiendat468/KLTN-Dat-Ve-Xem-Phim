@@ -43,4 +43,53 @@ public class XuatChieu {
         this.thoiGianBatDau = thoiGianBatDau;
         this.thoiGianKetThuc = thoiGianKetThuc;
     }
+
+	public int getIdXuatChieu() {
+		return idXuatChieu;
+	}
+
+	public void setIdXuatChieu(int idXuatChieu) {
+		this.idXuatChieu = idXuatChieu;
+	}
+
+	public LocalDate getNgayChieu() {
+		return ngayChieu;
+	}
+
+	public void setNgayChieu(LocalDate ngayChieu) {
+		this.ngayChieu = ngayChieu;
+	}
+
+	public String getThoiGianBatDau() {
+		return thoiGianBatDau;
+	}
+
+	public void setThoiGianBatDau(String thoiGianBatDau) {
+		this.thoiGianBatDau = thoiGianBatDau;
+	}
+
+	public String getThoiGianKetThuc() {
+		return thoiGianKetThuc;
+	}
+
+	public void setThoiGianKetThuc(String thoiGianKetThuc) {
+		this.thoiGianKetThuc = thoiGianKetThuc;
+	}
+
+	public Phim getPhim() {
+		return phim;
+	}
+
+	public void setPhim(Phim phim) {
+		this.phim = phim;
+	}
+
+	public PhongChieu getPhongChieu() {
+		return phongChieu;
+	}
+
+	public void setPhongChieu(PhongChieu phongChieu) {
+		this.phongChieu = phongChieu;
+	}
+    
 }
