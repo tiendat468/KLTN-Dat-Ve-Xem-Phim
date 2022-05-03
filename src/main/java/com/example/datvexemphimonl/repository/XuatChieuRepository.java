@@ -14,10 +14,9 @@ import java.util.List;
 
 @Repository
 public interface XuatChieuRepository extends JpaRepository<XuatChieu, Integer> {
-    List<XuatChieu> getXuatChieuByPhim(Phim phim);
+	List<XuatChieu> getXuatChieuByPhim(Phim phim);
 
-//    @Query("SELECT DISTINCT x.thoi_gian_bat_dau FROM XuatChieu x WHERE x.id_phim=:movieI AND x.ngay_chieu=:startDate")
-//    List<String> getXuatChieuByIdPhimAndDate(@Param("movieId") Integer movieId, @Param("startDate") LocalDate startDate);
-
-//    List<XuatChieu> getXuatChieuByIdPhimAndDate(Integer idXuatChieu, LocalDate ngayChieu);
+	@Query(value = "select * from xuat_chieu where id_phim = :idPhim and ngay_chieu = :ngayChieu and thoi_gian_bat_dau = :thoiGian ", nativeQuery = true)
+	List<XuatChieu> findByPhimAndNgayGio(@Param("idPhim") Integer idPhim, @Param("ngayChieu") String ngayChieu,
+			@Param("thoiGian") String thoiGian);
 }

@@ -11,16 +11,15 @@ import java.util.List;
 @Service
 public interface XuatChieuService {
 
-    XuatChieu saveXuatChieu(XuatChieu xuatChieu);
+	XuatChieu saveXuatChieu(XuatChieu xuatChieu);
 
-    XuatChieu getXuatChieuById(int id);
+	XuatChieu getXuatChieuById(int id);
 
-    XuatChieu updateXuatChieu(XuatChieu xuatChieu);
+	XuatChieu updateXuatChieu(XuatChieu xuatChieu);
 
-    List<XuatChieu> getXuatChieuByPhim(Phim phim);
+	List<XuatChieu> getXuatChieuByPhim(Phim phim);
 
-    List<XuatChieu> getXuatChieuByPhimAndDate(Phim phim,LocalDate date);
+	List<XuatChieu> getXuatChieuByPhimAndDate(Phim phim, LocalDate date);
 
-//    //Nhi
-//    List<XuatChieu> getXuatChieuByIdPhimAndDate(Integer movieId, LocalDate date);
+	List<XuatChieu> getXuatChieuByPhimAndNgayGio(Integer idPhim, String ngayChieu, String thoiGian);
 }

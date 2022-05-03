@@ -50,9 +50,9 @@ public class XuatChieuServiceImpl implements XuatChieuService {
         return result;
     }
 
-//    @Override
-//    public List<XuatChieu> getXuatChieuByIdPhimAndDate(Integer movieId, LocalDate date) {
-//        return xuatChieuRepository.getXuatChieuByIdPhimAndDate(movieId,date);
-//    }
+	@Override
+	public List<XuatChieu> getXuatChieuByPhimAndNgayGio(Integer idPhim, String ngayChieu, String thoiGian) {
+		return xuatChieuRepository.findByPhimAndNgayGio(idPhim, ngayChieu, thoiGian);
+	}
 
 }
