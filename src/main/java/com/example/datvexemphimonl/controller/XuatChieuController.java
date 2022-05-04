@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.datvexemphimonl.entity.Phim;
@@ -81,9 +82,26 @@ public class XuatChieuController {
 		return null;
 	}
 
-	@GetMapping("/{idPhim}/{date}/{time}")
-	public List<XuatChieuDTO> getXuatChieuByIdPhimAndDate(@PathVariable("idPhim") Integer idPhim,
-			@PathVariable("date") String date, @PathVariable("time") String time) throws ParseException {
+//	@GetMapping("/{idPhim}/{date}/{time}")
+//	public List<XuatChieuDTO> getXuatChieuByIdPhimAndDate(@PathVariable("idPhim") Integer idPhim,
+//			@PathVariable("date") String date, @PathVariable("time") String time) throws ParseException {
+//		try {
+//			Phim phim = phimService.getPhimById(idPhim);
+//			LocalDate ngayChieu1 = LocalDate.parse(date);
+//			List<XuatChieu> xuatChieus = xuatChieuService.getXuatChieuByPhimAndNgayGio(idPhim, date, time);
+//			List<XuatChieuDTO> list = new ArrayList<>();
+//			for (XuatChieu xuatChieu : xuatChieus) {
+//				list.add(changeDTOService.changeDTO(xuatChieu));
+//			}
+//			return list;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
+	@GetMapping("/xuatChieuByIdPhimAndDate")
+	public List<XuatChieuDTO> getXuatChieuByIdPhimAndDate(@RequestParam Integer idPhim,
+			@RequestParam String date, @RequestParam String time) throws ParseException {
 		try {
 			Phim phim = phimService.getPhimById(idPhim);
 			LocalDate ngayChieu1 = LocalDate.parse(date);

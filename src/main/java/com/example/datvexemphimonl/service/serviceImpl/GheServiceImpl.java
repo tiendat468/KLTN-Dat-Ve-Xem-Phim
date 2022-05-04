@@ -35,4 +35,6 @@ public class GheServiceImpl implements GheService {
         List<Ghe> list = gheRepository.getGhesByPhongChieu_IdPhong(xuatChieu.getPhongChieu().getIdPhong());
         return list;
     }
+
+	
 }

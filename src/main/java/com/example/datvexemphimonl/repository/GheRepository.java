@@ -11,4 +11,5 @@ import java.util.List;
 public interface GheRepository extends JpaRepository<Ghe, Integer> {
 
     List<Ghe> getGhesByPhongChieu_IdPhong(int idPhongChieu);
+
 }
