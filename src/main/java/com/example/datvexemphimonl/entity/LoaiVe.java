@@ -3,8 +3,9 @@ package com.example.datvexemphimonl.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum LoaiVe {
-    THUONG(1, "THUONG", 1000),
-    VIP(2, "VIP", 2000),
+    THUONG(0, "THUONG", 70000),
+    VIP(1, "VIP", 100000),
+    KHUYENMAI(2, "KHUYENMAI", 50000),
     ;
 
     private final int code;

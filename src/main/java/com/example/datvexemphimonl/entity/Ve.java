@@ -45,6 +45,15 @@ public class Ve {
         this.loaiVe = loaiVe;
     }
 
+	public Ve(LocalDate ngayXuatVe, LoaiVe loaiVe, KhachHang khachHang, Ghe ghe, XuatChieu xuatChieu) {
+		super();
+		this.ngayXuatVe = ngayXuatVe;
+		this.loaiVe = loaiVe;
+		this.khachHang = khachHang;
+		this.ghe = ghe;
+		this.xuatChieu = xuatChieu;
+	}
+
 	public int getIdVe() {
 		return idVe;
 	}

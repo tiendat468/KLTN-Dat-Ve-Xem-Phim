@@ -9,5 +9,5 @@ import java.util.Set;
 @Service
 public interface GheService {
     List<Ghe> getGheByXuatChieu(int idXuatChieu);
-   
+    public Ghe getGheById(int idGhe);
 }

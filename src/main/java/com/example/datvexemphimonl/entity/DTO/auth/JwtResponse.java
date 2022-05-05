@@ -9,12 +9,14 @@ import java.util.List;
 @Setter
 public class JwtResponse {
 
+	private int id;
 	private String tenKhachHang;
 	private String sdt;
 	private String type = "Bearer";
 	private String token;
 
-	public JwtResponse(String tenKhachHang, String sdt, String token) {
+	public JwtResponse(int id, String tenKhachHang, String sdt, String token) {
+		this.id = id;
 		this.tenKhachHang = tenKhachHang;
 		this.sdt = sdt;
 		this.token = token;
@@ -51,5 +53,14 @@ public class JwtResponse {
 	public void setToken(String token) {
 		this.token = token;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	
 }

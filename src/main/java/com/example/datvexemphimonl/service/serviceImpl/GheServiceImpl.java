@@ -15,26 +15,31 @@ import java.util.*;
 @Service
 public class GheServiceImpl implements GheService {
 
-    @Autowired
-    private GheRepository gheRepository;
+	@Autowired
+	private GheRepository gheRepository;
 
-    @Autowired
-    private XuatChieuRepository xuatChieuRepository;
+	@Autowired
+	private XuatChieuRepository xuatChieuRepository;
 
-    @Autowired
-    private VeRepository veRepository;
+	@Autowired
+	private VeRepository veRepository;
 
-    @Override
-    public List<Ghe> getGheByXuatChieu(int idXuatChieu) {
-        Optional<XuatChieu> optionalXuatChieu = xuatChieuRepository.findById(idXuatChieu);
+	@Override
+	public List<Ghe> getGheByXuatChieu(int idXuatChieu) {
+		Optional<XuatChieu> optionalXuatChieu = xuatChieuRepository.findById(idXuatChieu);
 
-        if (!optionalXuatChieu.isPresent()) {
-            return null;
-        }
-        XuatChieu xuatChieu = optionalXuatChieu.get();
-        List<Ghe> list = gheRepository.getGhesByPhongChieu_IdPhong(xuatChieu.getPhongChieu().getIdPhong());
-        return list;
-    }
+		if (!optionalXuatChieu.isPresent()) {
+			return null;
+		}
+		XuatChieu xuatChieu = optionalXuatChieu.get();
+		List<Ghe> list = gheRepository.getGhesByPhongChieu_IdPhong(xuatChieu.getPhongChieu().getIdPhong());
+		return list;
+	}
 
-	
+	@Override
+	public Ghe getGheById(int idGhe) {
+
+		return gheRepository.findById(idGhe).get();
+	}
+
 }

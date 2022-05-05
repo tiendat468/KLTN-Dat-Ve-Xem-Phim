@@ -54,7 +54,7 @@ public class AuthController {
 
             khachHang = khachHangService.getKhachHangBySDT(loginRequest.getSdt());
             return ResponseEntity.ok(
-                    new JwtResponse(khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
+                    new JwtResponse(khachHang.getIdKhachHang(), khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
         } catch (Exception ex) {
 
 
