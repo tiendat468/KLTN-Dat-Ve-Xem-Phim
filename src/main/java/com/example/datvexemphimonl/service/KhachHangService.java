@@ -1,12 +1,11 @@
 package com.example.datvexemphimonl.service;
 
-import com.example.datvexemphimonl.entity.DTO.*;
-import com.example.datvexemphimonl.entity.DTO.MainResponse;
-import com.example.datvexemphimonl.entity.KhachHang;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.example.datvexemphimonl.entity.KhachHang;
+import com.example.datvexemphimonl.entity.DTO.MainResponse;
 
 @Service
 public interface KhachHangService {
@@ -25,4 +24,6 @@ public interface KhachHangService {
     MainResponse<String> deleteKhachHang(int id);
 
     Boolean checkExistsKhachHangBySdt(String sdt);
+    
+    public boolean verify(String verificationCode);
 }
