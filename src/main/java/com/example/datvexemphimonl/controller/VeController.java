@@ -60,6 +60,17 @@ public class VeController {
 		});
 		return veDTOS;
 	}
+	
+	 @GetMapping("/khachhang/{id}")
+	    public List<VeDTO> getVeByKhachHang(@PathVariable("id") int id) {
+	    	List<Ve> ves = veService.getVeByKhachHang(id);
+	    	List<VeDTO> veDTOs = new ArrayList<VeDTO>();
+	    	for (Ve ve : ves) {
+	    		VeDTO dto = changeDTOService.changeDTO(ve);
+				veDTOs.add(dto);
+			}
+	        return veDTOs;
+	    }
 
 	@PostMapping
 	public ResponseEntity<String> createNewBill(@RequestParam int idLoaiVe, @RequestParam int idGhe, @RequestParam int idKhachHang, @RequestParam int idXuatChieu) {

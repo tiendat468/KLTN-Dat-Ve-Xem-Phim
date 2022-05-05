@@ -13,5 +13,7 @@ public interface VeService {
     Ve saveVe(Ve ve);
 
     List<Ve> getVeByXuatChieu(int idXuatChieu);
+    
+    List<Ve> getVeByKhachHang(int idKhachHang);
 
 }

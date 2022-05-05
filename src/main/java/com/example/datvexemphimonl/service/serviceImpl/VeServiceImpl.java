@@ -40,4 +40,9 @@ public class VeServiceImpl implements VeService {
         XuatChieu xuatChieu = optionalXuatChieu.get();
         return veRepository.getVesByXuatChieuIdXuatChieu(xuatChieu.getIdXuatChieu());
     }
+    
+    @Override
+	public List<Ve> getVeByKhachHang(int idKhachHang) {
+		return veRepository.getVesByKhachHang(idKhachHang);
+	}
 }
