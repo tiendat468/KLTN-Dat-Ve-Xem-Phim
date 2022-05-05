@@ -8,18 +8,18 @@ import lombok.Setter;
 public class PhongChieuDTO {
 
     private int idPhong;
-    private String soPhong;
+    private String tenPhong;
 	public int getIdPhong() {
 		return idPhong;
 	}
 	public void setIdPhong(int idPhong) {
 		this.idPhong = idPhong;
 	}
-	public String getSoPhong() {
-		return soPhong;
+	public String getTenPhong() {
+		return tenPhong;
 	}
-	public void setSoPhong(String soPhong) {
-		this.soPhong = soPhong;
+	public void setTenPhong(String tenPhong) {
+		this.tenPhong = tenPhong;
 	}
     
 }

@@ -89,7 +89,7 @@ public class ChangeDTOServiceImpl implements  ChangeDTOService{
         PhongChieuDTO phongChieuDTO = new PhongChieuDTO();
 
         phongChieuDTO.setIdPhong(phongChieu.getIdPhong());
-        phongChieuDTO.setSoPhong(phongChieu.getTenPhong());
+        phongChieuDTO.setTenPhong(phongChieu.getTenPhong());
 
         return phongChieuDTO;
     }
