@@ -14,8 +14,18 @@ public class KhachHangDTO {
     private LocalDate ngaySinh;
     private String sdt;
     private String thongTinThanhToan;
+	private boolean enabled;
 
-    public KhachHangDTO() {
+
+    public boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public KhachHangDTO() {
     }
 
 	public int getIdKhachHang() {

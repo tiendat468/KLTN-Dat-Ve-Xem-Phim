@@ -17,6 +17,7 @@ public class ChangeDTOServiceImpl implements  ChangeDTOService{
         khachHangDTO.setNgaySinh(khachHang.getNgaySinh());
         khachHangDTO.setSdt(khachHang.getSdt());
         khachHangDTO.setThongTinThanhToan(khachHang.getThongTinThanhToan());
+        khachHangDTO.setEnabled(khachHang.getEnabled());
 
         return khachHangDTO;
     }

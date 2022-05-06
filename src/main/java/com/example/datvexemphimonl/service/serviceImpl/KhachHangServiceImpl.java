@@ -55,7 +55,7 @@ public class KhachHangServiceImpl implements KhachHangService {
 	public boolean verify(String verificationCode) {
 		KhachHang khachHang = khachHangRepository.findByVerification_code(verificationCode);
 
-		if (khachHang == null || khachHang.isEnabled()) {
+		if (khachHang == null || khachHang.getEnabled()) {
 			return false;
 		} else {
 			khachHang.setVerification_code(null);
