@@ -134,7 +134,13 @@ public class AuthController {
 		String randomCode = RandomString.make(64);
 		khachHang.setVerification_code(randomCode);
 		khachHangService.saveKhachHang(khachHang);
-		sendVerificationEmail(request, khachHang);
+		try {
+			sendVerificationEmail(request, khachHang);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return ResponseEntity.badRequest().body(new MessageResponse("Email không tồn tại"));
+		}
+		
 		return ResponseEntity.ok(new MessageResponse("Register successfully"));
 	}
 
