@@ -20,7 +20,17 @@ public class KhachHangDTO {
 	private boolean enabled;
     private String thongTinThanhToan;
 
-    public KhachHangDTO() {
+
+
+    public boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public KhachHangDTO() {
     }
 
 	public int getIdKhachHang() {
@@ -79,14 +89,5 @@ public class KhachHangDTO {
 		this.verification_code = verification_code;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	
 }
 

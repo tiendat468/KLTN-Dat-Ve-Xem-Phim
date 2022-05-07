@@ -64,27 +64,44 @@ public class AuthController {
 	@Autowired
 	JWTUtils jwtUtils;
 
+	private ApiException apiException;
+
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest) {
-		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(loginRequest.getSdt(), loginRequest.getMatKhau()));
+		try {
+			if (!khachHangService.checkExistsKhachHangBySdt(loginRequest.getSdt())) {
+				return ResponseEntity.badRequest().body(new MessageResponse("E:Số điện thoại chưa đăng ký"));
+			}
+			KhachHang khachHang = validateLoginRequest(loginRequest);
+			if (!khachHang.getEnabled()) {
+
+				return ResponseEntity.badRequest()
+						.body(new MessageResponse("Người dùng đã bị vô hiệu hóa trên hệ thống"));
+
+			}
+			Authentication authentication = authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(loginRequest.getSdt(), loginRequest.getMatKhau()));
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 
 		String jwt = jwtUtils.generateJwtToken(authentication);
 
 //            khachHang = khachHangService.getKhachHangBySDT(loginRequest.getSdt());
-		KhachHang khachHang = this.validateLoginRequest(loginRequest);
-		return ResponseEntity
-				.ok(new JwtResponse(khachHang.getIdKhachHang(), khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
+			return ResponseEntity.ok(
+					new JwtResponse(khachHang.getIdKhachHang(), khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+//			return ResponseEntity.badRequest().body(new MessageResponse(ex.toString()));
+			return ResponseEntity.badRequest().body(new MessageResponse("E:Mật khẩu sai"));
+		}
 	}
 
 	@PostMapping("/register")
 	public ResponseEntity<?> registerUser(@Validated @RequestBody SignupRequest signupRequest,
 			HttpServletRequest request) throws UnsupportedEncodingException, MessagingException {
 		if (khachHangService.checkExistsKhachHangBySdt(signupRequest.getSdt())) {
-			return ResponseEntity.badRequest().body(new MessageResponse("E:sdtKhachHang is exists"));
+			return ResponseEntity.badRequest().body(new MessageResponse("E:Số điện thoại đã đăng ký"));
 		}
 
 		KhachHang khachHang = new KhachHang();
@@ -150,11 +167,12 @@ public class AuthController {
 			throw new ApiException(ERROR.INVALID_REQUEST,
 					"Số điện thoại hoặc mật khẩu không đúng, xin vui lòng thử lại!");
 		}
-		if (!optionalAccount.isEnabled()) {
-			LOGGER.debug("login - user login fail : user {} not active", loginUser.getSdt());
-			throw new ApiException(ERROR.INVALID_REQUEST, "Người dùng đã bị vô hiệu hóa trên hệ thống");
-			
-		}
+//		if (!optionalAccount.isEnabled()) {
+//			LOGGER.debug("login - user login fail : user {} not active", loginUser.getSdt());
+////			throw new ApiException(ERROR.INVALID_REQUEST, "Người dùng đã bị vô hiệu hóa trên hệ thống");
+//			apiException = new ApiException(ERROR.INVALID_REQUEST, "Người dùng đã bị vô hiệu hóa trên hệ thống");
+//			return optionalAccount;
+//		}
 
 		return optionalAccount;
 	}

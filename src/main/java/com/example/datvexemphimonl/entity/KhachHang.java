@@ -155,7 +155,7 @@ public class KhachHang {
 		this.verification_code = verification_code;
 	}
 
-	public boolean isEnabled() {
+	public boolean getEnabled() {
 		return enabled;
 	}
 
