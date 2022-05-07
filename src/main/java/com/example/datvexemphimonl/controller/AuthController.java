@@ -66,22 +66,18 @@ public class AuthController {
 
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest) {
-		try {
-			Authentication authentication = authenticationManager.authenticate(
-					new UsernamePasswordAuthenticationToken(loginRequest.getSdt(), loginRequest.getMatKhau()));
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(loginRequest.getSdt(), loginRequest.getMatKhau()));
 
-			SecurityContextHolder.getContext().setAuthentication(authentication);
+		SecurityContextHolder.getContext().setAuthentication(authentication);
 
-			String jwt = jwtUtils.generateJwtToken(authentication);
+		String jwt = jwtUtils.generateJwtToken(authentication);
 
 //            khachHang = khachHangService.getKhachHangBySDT(loginRequest.getSdt());
-			KhachHang khachHang = this.validateLoginRequest(loginRequest);
-			return ResponseEntity.ok(
-					new JwtResponse(khachHang.getIdKhachHang(), khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
-		} catch (Exception ex) {
+		KhachHang khachHang = this.validateLoginRequest(loginRequest);
+		return ResponseEntity
+				.ok(new JwtResponse(khachHang.getIdKhachHang(), khachHang.getTenKhachHang(), khachHang.getSdt(), jwt));
 
-			return ResponseEntity.badRequest().body(new MessageResponse("E:khachhang sai"));
-		}
 	}
 
 	@PostMapping("/register")
@@ -138,6 +134,7 @@ public class AuthController {
 		if (StringUtils.isBlank(loginUser.getSdt())) {
 			LOGGER.debug("login - user login fail : username blank");
 			throw new ApiException(ERROR.INVALID_REQUEST, "Số điện thoại không được để trống");
+			
 		}
 		if (StringUtils.isBlank(loginUser.getMatKhau())) {
 			LOGGER.debug("login - user login fail : password blank");
@@ -156,6 +153,7 @@ public class AuthController {
 		if (!optionalAccount.isEnabled()) {
 			LOGGER.debug("login - user login fail : user {} not active", loginUser.getSdt());
 			throw new ApiException(ERROR.INVALID_REQUEST, "Người dùng đã bị vô hiệu hóa trên hệ thống");
+			
 		}
 
 		return optionalAccount;
